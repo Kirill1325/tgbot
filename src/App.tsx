@@ -3,12 +3,13 @@ import { useEffect, useState } from 'react'
 import './App.scss'
 
 const tg = window.Telegram.WebApp
+let lang = tg.initDataUnsafe.user?.language_code
 
 function App() {
 
   useEffect(() => {
     tg.ready()
-    console.log(tg.initDataUnsafe.user?.language_code)
+    // console.log(tg.initDataUnsafe.user?.language_code)
   }, [])
 
   const handleClose = () => {
@@ -17,7 +18,7 @@ function App() {
 
   return (
     <>
-
+      <p>{lang}</p>
       <button onClick={handleClose}>Close</button>
     </>
   )
