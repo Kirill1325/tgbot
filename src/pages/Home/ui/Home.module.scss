@@ -1,12 +1,20 @@
 .home {
     display: flex;
     flex-direction: column;
-    >.buttons{
+
+    >.buttons {
         display: flex;
         flex-direction: column;
-        >.button{
+        margin-bottom: 1em;
+
+        >.button {
             display: flex;
+
+            >label {
+                color: var(--tg-theme-text-color);
+            }
         }
+
         // >button{
         //     width: 5em;
         //     height: 2em;
@@ -17,7 +25,7 @@
         //     color: var(--tg-theme-text-color);
         //     border-radius: 1vmax;
         //     cursor: pointer;
-           
+
         // }
     }
 
