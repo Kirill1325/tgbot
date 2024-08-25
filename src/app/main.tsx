@@ -5,7 +5,7 @@ import store from './store.ts'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from '../pages/Home/index.ts'
 import { ZodiacPage } from '../pages/ZodiacPage'
-import './i18n'
+import './i18n.ts'
 
 export const tg = window.Telegram.WebApp
 export const lang = tg.initDataUnsafe.user?.language_code
