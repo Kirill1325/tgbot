@@ -3,7 +3,7 @@ import { ZodiacList } from '../../../widgets/ZodiacList'
 
 const tg = window.Telegram.WebApp
 let lang = tg.initDataUnsafe.user?.language_code
-let ppo = tg.showPopup
+// let ppo = tg.showPopup
 
 export const Home = () => {
     useEffect(() => {
