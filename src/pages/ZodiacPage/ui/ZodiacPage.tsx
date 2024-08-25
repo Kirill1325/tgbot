@@ -4,10 +4,13 @@ import { useEffect, useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
 import { useAppSelector } from '../../../app/store'
+import { useTranslation } from 'react-i18next'
 
 export const ZodiacPage = () => {
 
     const { zodiac } = useParams<{ zodiac?: string }>()
+    const { t } = useTranslation()
+
 
     const { language } = useAppSelector(state => state.LanguageSlice)
 
@@ -35,7 +38,7 @@ export const ZodiacPage = () => {
 
     return (
         <div >
-            <p>{zodiac}</p>
+            <p>{zodiac && t(zodiac)}</p>
             <p>{description?.horoscope}</p>
         </div>
     )

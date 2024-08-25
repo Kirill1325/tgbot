@@ -8,7 +8,7 @@ import { ZodiacPage } from '../pages/ZodiacPage'
 import './i18n.ts'
 
 export const tg = window.Telegram.WebApp
-export const lang = tg.initDataUnsafe.user?.language_code
+export const deviceLanguage = tg.initDataUnsafe.user?.language_code
 
 const router = createBrowserRouter([
 

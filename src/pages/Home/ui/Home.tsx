@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
-import { lang, tg } from '../../../app/main'
+import { deviceLanguage, tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
 import cl from './Home.module.scss'
-import { useAppDispatch } from '../../../app/store'
+import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 
 const languages = {
@@ -14,7 +14,12 @@ const languages = {
 export const Home = () => {
 
 
-    // const { language } = useAppSelector(state => state.LanguageSlice)
+    const { language } = useAppSelector(state => state.LanguageSlice)
+
+    useEffect(() => {
+        console.log(language)
+    }, [language])
+    
     const dispatch = useAppDispatch()
 
     const { i18n } = useTranslation()
@@ -22,9 +27,11 @@ export const Home = () => {
     useEffect(() => {
         tg.ready()
         tg.BackButton.hide()
-        console.log(lang)
-        dispatch(switchLanguage(lang))
+        console.log(deviceLanguage)
+        // dispatch(switchLanguage(deviceLanguage))
     }, [])
+
+
 
     const handleClose = () => {
         tg.close()
@@ -37,7 +44,7 @@ export const Home = () => {
 
     return (
         <div className={cl.home}>
-            <p>{lang}</p>
+            <p>{deviceLanguage}</p>
             <div>
                 {Object.keys(languages).map((lng) =>
                     <button
