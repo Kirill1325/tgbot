@@ -9,6 +9,7 @@ const rootReducer = combineReducers({
 
 const store = configureStore({
     reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(ZodiacApi.middleware)
 })
 
 export type RootState = ReturnType<typeof rootReducer>

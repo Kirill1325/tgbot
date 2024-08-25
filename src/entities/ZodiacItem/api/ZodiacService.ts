@@ -11,11 +11,12 @@ export const ZodiacApi = createApi({
                     url: '/',
                     method: 'POST',
                     body,
-                    headers: {
-                        'Content-type': 'application/json; charset=UTF-8',
-                    },
+                    // headers: {
+                    //     'Content-type': 'application/json; charset=UTF-8',
+                    // },
                 }
-            }
+            },
+            // transformResponse: (response: { data: ZodiacQueryType }, meta, arg) => response.data,
         })
     })
 })

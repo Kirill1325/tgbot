@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
 import { tg } from '../../../app/main'
+// import { useTranslation } from 'react-i18next'
 
 
 
@@ -9,9 +10,12 @@ import { tg } from '../../../app/main'
 export const Home = () => {
 
     const lang = tg.initDataUnsafe.user?.language_code
-    
+
+    // const { t } = useTranslation()
+
     useEffect(() => {
         tg.ready()
+        tg.BackButton.hide()
     }, [])
 
     const handleClose = () => {
