@@ -1,13 +1,14 @@
 import i18next from "i18next";
 import LanguageDetector from 'i18next-browser-languagedetector'
 import { initReactI18next } from "react-i18next";
+import { lang } from './main'
 
 i18next
     .use(initReactI18next)
     .use(LanguageDetector)
     .init({
-        lng: "ru",
-        fallbackLng: "ru",
+        lng: { lang },
+        fallbackLng: { lang },
         resources: {
             ru: {
                 translation: {
@@ -34,7 +35,7 @@ i18next
                     "November 22 – December 21": 'Ноябрь 22 – Декабрь 21',
                     "December 22 – January 19": 'Декабрь 22 – Январь 19',
                     "January 20 – February 18": 'Январь 20 – Февраль 18',
-                    "February 19–March 20": 'Февраль 19–Март 20',
+                    "February 19 – March 20": 'Февраль 19 – Март 20',
                 }
             },
             en: {
@@ -62,7 +63,7 @@ i18next
                     "November 22 – December 21": 'November 22 – December 21',
                     "December 22 – January 19": 'December 22 – January 19',
                     "January 20 – February 18": 'January 20 – February 18',
-                    "February 19–March 20": 'February 19–March 20',
+                    "February 19 – March 20": 'February 19 – March 20',
                 }
             },
         }

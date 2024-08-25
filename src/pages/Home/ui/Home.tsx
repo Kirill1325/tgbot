@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
-import { tg } from '../../../app/main'
+import { lang, tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
+import cl from './Home.module.scss'
 
 const languages = {
     ru: { nativeName: 'Russian' },
@@ -10,8 +11,6 @@ const languages = {
 
 export const Home = () => {
 
-    const lang = tg.initDataUnsafe.user?.language_code
-
     const [_currentlanguage, setCurrentLanguage] = useState(lang)
 
     const { i18n } = useTranslation()
@@ -19,6 +18,7 @@ export const Home = () => {
     useEffect(() => {
         tg.ready()
         tg.BackButton.hide()
+        console.log(lang)
     }, [])
 
     const handleClose = () => {
@@ -31,7 +31,7 @@ export const Home = () => {
     }
 
     return (
-        <div className='Home'>
+        <div className={cl.home}>
             <p>{lang}</p>
             <div>
                 {Object.keys(languages).map((lng) =>
