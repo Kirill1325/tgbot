@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
 import { tg } from '../../../app/main'
-import {  useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
 import { useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
 import cl from './ZodiacPage.module.scss'
-import { Swiper } from '../../../entities/Swiper/ui/Swiper'
+import { useSwipeable } from 'react-swipeable'
 
 export const ZodiacPage = () => {
 
@@ -44,20 +44,24 @@ export const ZodiacPage = () => {
         fetch()
     }, [])
 
-    const handleSwipe = (deltaX: number) => {
-        if (deltaX > 0) {
-            navigate('/')
+   
+
+    const handlers = useSwipeable({
+        onSwiped: (eventData) => {
+            if(eventData.dir === 'Right'){
+                navigate('/')
+            }
         }
 
-    }
+    });
 
 
     return (
-        <Swiper onSwipe={() => handleSwipe}>
-            <div className={cl.zodiacPage}>
-                <p>{zodiac && t(zodiac)}</p>
-                <p>{description?.horoscope}</p>
-            </div>
-        </Swiper>
+        // <Swiper onSwipe={() => handleSwipe}>
+        <div className={cl.zodiacPage} {...handlers}>
+            <p>{zodiac && t(zodiac)}</p>
+            <p>{description?.horoscope}</p>
+        </div>
+        // {/* </Swiper> */ }
     )
 }
