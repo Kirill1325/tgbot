@@ -29,7 +29,7 @@ export const Home = () => {
         tg.ready()
         tg.BackButton.hide()
         console.log(deviceLanguage)
-        dispatch(switchLanguage(deviceLanguage))
+        // dispatch(switchLanguage(deviceLanguage))
     }, [])
 
 
