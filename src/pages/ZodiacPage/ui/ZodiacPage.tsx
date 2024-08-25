@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { deviceLanguage, tg } from '../../../app/main'
-import { useEffect, useRef, useState } from 'react'
+import {  tg } from '../../../app/main'
+import { useEffect,  useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
-import { useAppDispatch, useAppSelector } from '../../../app/store'
+import {  useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
-import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
+// import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 import cl from './ZodiacPage.module.scss'
 
 export const ZodiacPage = () => {
@@ -15,7 +15,7 @@ export const ZodiacPage = () => {
 
 
     const { language } = useAppSelector(state => state.LanguageSlice)
-    const dispatch = useAppDispatch()
+    // const dispatch = useAppDispatch()
 
     const [description, setDescription] = useState<ZodiacQueryType | null>(null)
 
@@ -25,11 +25,11 @@ export const ZodiacPage = () => {
 
     const [getDescriptionBySign] = ZodiacApi.useGetDescriptionBySignMutation()
 
-    const calledOnce = useRef(false)
+    // const calledOnce = useRef(false)
 
     useEffect(() => {
-        !calledOnce.current && dispatch(switchLanguage(deviceLanguage))
-        calledOnce.current = true
+        // !calledOnce.current && dispatch(switchLanguage(deviceLanguage))
+        // calledOnce.current = true
         tg.BackButton.show()
         const fetch = async () => {
             zodiac &&
