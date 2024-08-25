@@ -1,17 +1,18 @@
 import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
 import { tg } from '../../../app/main'
-// import { useTranslation } from 'react-i18next'
+import { useTranslation } from 'react-i18next'
 
-
-
-// let ppo = tg.showPopup
+const languages = {
+    ru: { nativeName: 'Russian' },
+    en: { nativeName: 'English' }
+}
 
 export const Home = () => {
 
     const lang = tg.initDataUnsafe.user?.language_code
 
-    // const { t } = useTranslation()
+    const {  i18n } = useTranslation()
 
     useEffect(() => {
         tg.ready()
@@ -25,6 +26,17 @@ export const Home = () => {
     return (
         <div className='Home'>
             <p>{lang}</p>
+            <div>
+                {Object.keys(languages).map((lng) =>
+                    <button
+                        key={lng}
+                        onClick={() => i18n.changeLanguage(lng)}
+                        disabled={i18n.resolvedLanguage === lng}
+                    >
+                        {lng}
+                    </button>
+                )}
+            </div>
             <ZodiacList />
             <button onClick={handleClose}>Close</button>
         </div>
