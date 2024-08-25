@@ -1,8 +1,10 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
 import { lang, tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
 import cl from './Home.module.scss'
+import { useAppDispatch } from '../../../app/store'
+import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 
 const languages = {
     ru: { nativeName: 'Russian' },
@@ -11,7 +13,9 @@ const languages = {
 
 export const Home = () => {
 
-    const [_currentlanguage, setCurrentLanguage] = useState(lang)
+
+    // const { language } = useAppSelector(state => state.LanguageSlice)
+    const dispatch = useAppDispatch()
 
     const { i18n } = useTranslation()
 
@@ -19,15 +23,16 @@ export const Home = () => {
         tg.ready()
         tg.BackButton.hide()
         console.log(lang)
+        dispatch(switchLanguage(lang))
     }, [])
 
     const handleClose = () => {
         tg.close()
     }
 
-    const handleLangChange = (lng: string) => {
+    const handleLangChange = (lng: string | undefined) => {
         i18n.changeLanguage(lng)
-        setCurrentLanguage(lng)
+        dispatch(switchLanguage(lng))
     }
 
     return (

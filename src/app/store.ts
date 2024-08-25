@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux'
 import { ZodiacApi } from "../entities/ZodiacItem";
+import LanguageSlice from "../features/SwitchLanguage/model/LanguageSlice";
 
 
 const rootReducer = combineReducers({
-    [ZodiacApi.reducerPath]: ZodiacApi.reducer
+    [ZodiacApi.reducerPath]: ZodiacApi.reducer,
+    LanguageSlice
 })
 
 const store = configureStore({
