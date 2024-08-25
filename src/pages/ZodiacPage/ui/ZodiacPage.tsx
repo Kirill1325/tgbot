@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import {  tg } from '../../../app/main'
-import { useEffect,  useState } from 'react'
+import { tg } from '../../../app/main'
+import {  useEffect, useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
-import {  useAppSelector } from '../../../app/store'
+import { useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
 import cl from './ZodiacPage.module.scss'
+import { Swiper } from '../../../entities/Swiper/ui/Swiper'
 
 export const ZodiacPage = () => {
 
@@ -26,7 +27,7 @@ export const ZodiacPage = () => {
 
 
     useEffect(() => {
-      
+
         tg.BackButton.show()
         const fetch = async () => {
             zodiac &&
@@ -43,11 +44,20 @@ export const ZodiacPage = () => {
         fetch()
     }, [])
 
+    const handleSwipe = (deltaX: number) => {
+        if (deltaX > 0) {
+            navigate('/')
+        }
+
+    }
+
 
     return (
-        <div className={cl.zodiacPage}>
-            <p>{zodiac && t(zodiac)}</p>
-            <p>{description?.horoscope}</p>
-        </div>
+        <Swiper onSwipe={() => handleSwipe}>
+            <div className={cl.zodiacPage}>
+                <p>{zodiac && t(zodiac)}</p>
+                <p>{description?.horoscope}</p>
+            </div>
+        </Swiper>
     )
 }
