@@ -1,1 +1,1 @@
-export { ZodiacPage} from './ui/ZodiacPAge'
+export { ZodiacPage} from './ui/ZodiacPage'
