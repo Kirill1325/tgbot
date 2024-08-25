@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom'
-import { tg } from '../../../app/main'
+import { deviceLanguage, tg } from '../../../app/main'
 import { useEffect, useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
-import { useAppSelector } from '../../../app/store'
+import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
+import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 
 export const ZodiacPage = () => {
 
@@ -13,6 +14,7 @@ export const ZodiacPage = () => {
 
 
     const { language } = useAppSelector(state => state.LanguageSlice)
+    const dispatch = useAppDispatch()
 
     const [description, setDescription] = useState<ZodiacQueryType | null>(null)
 
@@ -23,6 +25,7 @@ export const ZodiacPage = () => {
     const [getDescriptionBySign] = ZodiacApi.useGetDescriptionBySignMutation()
 
     useEffect(() => {
+        dispatch(switchLanguage(deviceLanguage))
         tg.BackButton.show()
         zodiac &&
             getDescriptionBySign({
