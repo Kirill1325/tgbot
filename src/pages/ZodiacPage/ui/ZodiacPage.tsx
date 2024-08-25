@@ -6,6 +6,7 @@ import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
 import { useAppDispatch, useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
 import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
+import cl from './ZodiacPage.module.scss'
 
 export const ZodiacPage = () => {
 
@@ -27,20 +28,24 @@ export const ZodiacPage = () => {
     useEffect(() => {
         deviceLanguage && dispatch(switchLanguage(deviceLanguage))
         tg.BackButton.show()
-        zodiac &&
-            getDescriptionBySign({
-                sign: zodiac.toLocaleLowerCase(),
-                language: language === 'ru' ? 'original' : 'translated',
-                period: 'today'
-            })
-                .unwrap()
-                .then(fulfilled => setDescription(fulfilled))
-                .catch(rejected => console.error(rejected))
+        const fetch = async () => {
+            zodiac &&
+                await getDescriptionBySign({
+                    sign: zodiac.toLocaleLowerCase(),
+                    language: language === 'ru' ? 'original' : 'translated',
+                    period: 'today'
+                })
+                    .unwrap()
+                    .then(fulfilled => setDescription(fulfilled))
+                    .catch(rejected => console.error(rejected))
+        }
+
+        fetch()
     }, [])
 
 
     return (
-        <div >
+        <div className={cl.zodiacPage}>
             <p>{zodiac && t(zodiac)}</p>
             <p>{description?.horoscope}</p>
         </div>

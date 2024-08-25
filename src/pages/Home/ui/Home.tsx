@@ -3,7 +3,7 @@ import { ZodiacList } from '../../../widgets/ZodiacList'
 import { deviceLanguage, tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
 import cl from './Home.module.scss'
-import { useAppDispatch, useAppSelector } from '../../../app/store'
+import { useAppDispatch } from '../../../app/store'
 import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 
 const languages = {
@@ -14,21 +14,22 @@ const languages = {
 export const Home = () => {
 
 
-    const { language } = useAppSelector(state => state.LanguageSlice)
+    // const { language } = useAppSelector(state => state.LanguageSlice)
 
-    useEffect(() => {
-        console.log(language)
-    }, [language])
+    // useEffect(() => {
+    //     console.log(language)
+    // }, [language])
     
     const dispatch = useAppDispatch()
 
     const { i18n } = useTranslation()
 
     useEffect(() => {
+
         tg.ready()
         tg.BackButton.hide()
         console.log(deviceLanguage)
-        // dispatch(switchLanguage(deviceLanguage))
+        dispatch(switchLanguage(deviceLanguage))
     }, [])
 
 
