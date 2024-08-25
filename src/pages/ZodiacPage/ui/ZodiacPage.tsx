@@ -25,7 +25,7 @@ export const ZodiacPage = () => {
     const [getDescriptionBySign] = ZodiacApi.useGetDescriptionBySignMutation()
 
     useEffect(() => {
-        dispatch(switchLanguage(deviceLanguage))
+        deviceLanguage && dispatch(switchLanguage(deviceLanguage))
         tg.BackButton.show()
         zodiac &&
             getDescriptionBySign({
