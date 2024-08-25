@@ -3,10 +3,13 @@ import { ZodiacList } from '../../../widgets/ZodiacList'
 import { tg } from '../../../app/main'
 
 
-let lang = tg.initDataUnsafe.user?.language_code
+
 // let ppo = tg.showPopup
 
 export const Home = () => {
+
+    const lang = tg.initDataUnsafe.user?.language_code
+    
     useEffect(() => {
         tg.ready()
     }, [])
