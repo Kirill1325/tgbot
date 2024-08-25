@@ -13,18 +13,9 @@ const languages = {
 
 export const Home = () => {
 
-
-    // const { language } = useAppSelector(state => state.LanguageSlice)
-
-    // useEffect(() => {
-    //     console.log(language)
-    // }, [language])
-
     const dispatch = useAppDispatch()
 
-    const { i18n } = useTranslation()
-
-    // const calledOnce = useRef(false)
+    const { t, i18n } = useTranslation()
 
     useEffect(() => {
         const firedOnce = window.sessionStorage.getItem("firedOnce");
@@ -35,12 +26,6 @@ export const Home = () => {
         window.sessionStorage.setItem("firedOnce", "true");
     }, [])
 
-
-
-    const handleClose = () => {
-        tg.close()
-    }
-
     const handleLangChange = (lng: string | undefined) => {
         i18n.changeLanguage(lng)
         dispatch(switchLanguage(lng))
@@ -48,20 +33,22 @@ export const Home = () => {
 
     return (
         <div className={cl.home}>
-            <p>{deviceLanguage}</p>
-            <div>
+            <p>{t('selectLanguage')}</p>
+            <div className={cl.buttons}>
                 {Object.keys(languages).map((lng) =>
-                    <button
-                        key={lng}
-                        onClick={() => handleLangChange(lng)}
-                        disabled={i18n.resolvedLanguage === lng}
-                    >
-                        {lng}
-                    </button>
+                    <div className={cl.button} key={lng}>
+                        <input
+                            type='radio'
+                            id={lng}
+                            name={lng}
+                            onChange={() => handleLangChange(lng)}
+                            checked={i18n.resolvedLanguage === lng}
+                        />
+                        <label htmlFor={lng}>{lng}</label>
+                    </div>
                 )}
             </div>
             <ZodiacList />
-            <button onClick={handleClose}>Close</button>
         </div>
     )
 }

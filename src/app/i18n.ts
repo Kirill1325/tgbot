@@ -13,6 +13,7 @@ i18next
         resources: {
             ru: {
                 translation: {
+                    selectLanguage: "Язык:",
                     Aries: 'Овен',
                     Taurus: 'Телец',
                     Gemini: 'Близнецы ',
@@ -41,6 +42,7 @@ i18next
             },
             en: {
                 translation: {
+                    selectLanguage: "Language:",
                     Aries: 'Aries',
                     Taurus: 'Taurus',
                     Gemini: 'Gemini',

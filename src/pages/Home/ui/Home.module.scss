@@ -1,6 +1,25 @@
 .home {
     display: flex;
     flex-direction: column;
+    >.buttons{
+        display: flex;
+        flex-direction: column;
+        >.button{
+            display: flex;
+        }
+        // >button{
+        //     width: 5em;
+        //     height: 2em;
+        //     background: blue;
+        //     outline: none;
+        //     border: 1px solid black;
+        //     // border: 1px solid var(--tg-theme-text-color);
+        //     color: var(--tg-theme-text-color);
+        //     border-radius: 1vmax;
+        //     cursor: pointer;
+           
+        // }
+    }
 
     >p {
         color: var(--tg-theme-text-color);
