@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
 import { deviceLanguage, tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
@@ -24,15 +24,15 @@ export const Home = () => {
 
     const { i18n } = useTranslation()
 
-    const calledOnce = useRef(false)
+    // const calledOnce = useRef(false)
 
     useEffect(() => {
-
+        const firedOnce = window.sessionStorage.getItem("firedOnce");
         tg.ready()
         tg.BackButton.hide()
         console.log(deviceLanguage)
-        !calledOnce.current && dispatch(switchLanguage(deviceLanguage))
-        calledOnce.current = true
+        !firedOnce && dispatch(switchLanguage(deviceLanguage))
+        window.sessionStorage.setItem("firedOnce", "true");
     }, [])
 
 

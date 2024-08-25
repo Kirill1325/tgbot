@@ -5,7 +5,6 @@ import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
 import {  useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
-// import { switchLanguage } from '../../../features/SwitchLanguage/model/LanguageSlice'
 import cl from './ZodiacPage.module.scss'
 
 export const ZodiacPage = () => {
@@ -25,11 +24,9 @@ export const ZodiacPage = () => {
 
     const [getDescriptionBySign] = ZodiacApi.useGetDescriptionBySignMutation()
 
-    // const calledOnce = useRef(false)
 
     useEffect(() => {
-        // !calledOnce.current && dispatch(switchLanguage(deviceLanguage))
-        // calledOnce.current = true
+      
         tg.BackButton.show()
         const fetch = async () => {
             zodiac &&
