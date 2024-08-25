@@ -1,0 +1,1 @@
+export { ZodiacPage} from './ui/ZodiacPAge'

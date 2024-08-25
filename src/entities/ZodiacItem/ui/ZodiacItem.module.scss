@@ -1,0 +1,13 @@
+a {
+    text-decoration: none;
+
+    >.zodiacItem {
+        display: flex;
+        align-items: center;
+        gap: 1em;
+        padding: 5px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
