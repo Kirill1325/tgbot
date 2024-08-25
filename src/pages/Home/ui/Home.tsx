@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
+import { tg } from '../../../app/main'
 
-const tg = window.Telegram.WebApp
+
 let lang = tg.initDataUnsafe.user?.language_code
 // let ppo = tg.showPopup
 

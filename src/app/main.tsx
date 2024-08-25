@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { Home } from '../pages/Home/index.ts'
 import { ZodiacPage } from '../pages/ZodiacPage'
 
+export const tg = window.Telegram.WebApp
+
 const router = createBrowserRouter([
 
   {
