@@ -17,9 +17,8 @@ export const ZodiacItem = ({ zodiac }: ZodiacItemProps) => {
         <Link to={`/${zodiac.sign}`}>
             <div className={cl.zodiacItem}>
                 <p>{zodiac.symbol}</p>
-                {/* <p>{zodiac.sign}</p> */}
                 <p>{t(zodiac.sign)}</p>
-                <p>{zodiac.period}</p>
+                <p>{t(zodiac.period)}</p>
             </div>
         </Link>
     )

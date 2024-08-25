@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { ZodiacList } from '../../../widgets/ZodiacList'
 import { tg } from '../../../app/main'
 import { useTranslation } from 'react-i18next'
@@ -12,7 +12,9 @@ export const Home = () => {
 
     const lang = tg.initDataUnsafe.user?.language_code
 
-    const {  i18n } = useTranslation()
+    const [_currentlanguage, setCurrentLanguage] = useState(lang)
+
+    const { i18n } = useTranslation()
 
     useEffect(() => {
         tg.ready()
@@ -23,6 +25,11 @@ export const Home = () => {
         tg.close()
     }
 
+    const handleLangChange = (lng: string) => {
+        i18n.changeLanguage(lng)
+        setCurrentLanguage(lng)
+    }
+
     return (
         <div className='Home'>
             <p>{lang}</p>
@@ -30,7 +37,7 @@ export const Home = () => {
                 {Object.keys(languages).map((lng) =>
                     <button
                         key={lng}
-                        onClick={() => i18n.changeLanguage(lng)}
+                        onClick={() => handleLangChange(lng)}
                         disabled={i18n.resolvedLanguage === lng}
                     >
                         {lng}
