@@ -6,12 +6,16 @@
     color: #212121
 }
 
-body {
+html {
     background-color: var(--tg-theme-bg-color);
 
-    >#root {
+    body {
         background-color: var(--tg-theme-bg-color);
-        padding: 1em;
 
+        >#root {
+            background-color: var(--tg-theme-bg-color);
+            padding: 1em;
+
+        }
     }
 }
