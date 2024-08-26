@@ -3,14 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     color: var(--tg-theme-text-color);
+    color: #212121
 }
 
 body {
     background-color: var(--tg-theme-bg-color);
-    
 
     >#root {
-
+        background-color: var(--tg-theme-bg-color);
         padding: 1em;
 
     }

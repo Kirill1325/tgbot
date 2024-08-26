@@ -24,6 +24,8 @@ export const Home = () => {
         console.log(deviceLanguage)
         !firedOnce && dispatch(switchLanguage(deviceLanguage))
         window.sessionStorage.setItem("firedOnce", "true");
+
+        console.log(navigator)
     }, [])
 
     const handleLangChange = (lng: string | undefined) => {
