@@ -21,11 +21,11 @@ export const Home = () => {
         const firedOnce = window.sessionStorage.getItem("firedOnce");
         tg.ready()
         tg.BackButton.hide()
-        console.log(deviceLanguage)
+        // console.log(deviceLanguage)
         !firedOnce && dispatch(switchLanguage(deviceLanguage))
         window.sessionStorage.setItem("firedOnce", "true");
 
-        console.log(navigator)
+        // console.log(navigator)
     }, [])
 
     const handleLangChange = (lng: string | undefined) => {
@@ -51,7 +51,7 @@ export const Home = () => {
                     </div>
                 )}
             </div>
-            <ZodiacList />
+            {i18n.resolvedLanguage && <ZodiacList lang={i18n.resolvedLanguage} />}
         </div>
     )
 }

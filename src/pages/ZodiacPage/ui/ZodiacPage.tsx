@@ -1,9 +1,9 @@
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { tg } from '../../../app/main'
 import { useEffect, useState } from 'react'
 import { ZodiacApi } from '../../../entities/ZodiacItem'
 import { ZodiacQueryType } from '../../../entities/ZodiacItem/model/types'
-import { useAppSelector } from '../../../app/store'
+// import { useAppSelector } from '../../../app/store'
 import { useTranslation } from 'react-i18next'
 import cl from './ZodiacPage.module.scss'
 import { useSwipeable } from 'react-swipeable'
@@ -14,8 +14,14 @@ export const ZodiacPage = () => {
     const { t } = useTranslation()
 
 
-    const { language } = useAppSelector(state => state.LanguageSlice)
+    // const { language } = useAppSelector(state => state.LanguageSlice)
     // const dispatch = useAppDispatch()
+
+    const location = useLocation()
+    const language = location.pathname.split('/')[2]
+    // useEffect(() => {
+    //     console.log(language)
+    // }, [location])
 
     const [description, setDescription] = useState<ZodiacQueryType | null>(null)
 
@@ -44,11 +50,11 @@ export const ZodiacPage = () => {
         fetch()
     }, [])
 
-   
+
 
     const handlers = useSwipeable({
         onSwiped: (eventData) => {
-            if(eventData.dir === 'Right'){
+            if (eventData.dir === 'Right') {
                 navigate('/')
             }
         }

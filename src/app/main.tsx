@@ -18,7 +18,7 @@ const router = createBrowserRouter([
 
   },
   {
-    path: '/:zodiac',
+    path: '/:zodiac/:lang',
     element: <ZodiacPage />
   }
 ])
