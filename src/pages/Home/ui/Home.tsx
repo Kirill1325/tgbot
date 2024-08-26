@@ -35,6 +35,7 @@ export const Home = () => {
 
     return (
         <div className={cl.home}>
+            <p>{deviceLanguage}</p>
             <p>{t('selectLanguage')}</p>
             <div className={cl.buttons}>
                 {Object.keys(languages).map((lng) =>
