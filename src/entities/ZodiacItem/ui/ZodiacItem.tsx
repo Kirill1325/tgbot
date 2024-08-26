@@ -10,8 +10,6 @@ interface ZodiacItemProps {
 
 export const ZodiacItem = ({ zodiac, lang }: ZodiacItemProps) => {
 
-    // const [getDescription] = ZodiacApi.useGetDescriptionBySignMutation()
-
     const { t } = useTranslation()
 
     return (

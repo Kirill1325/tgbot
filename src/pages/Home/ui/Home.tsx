@@ -21,11 +21,8 @@ export const Home = () => {
         const firedOnce = window.sessionStorage.getItem("firedOnce");
         tg.ready()
         tg.BackButton.hide()
-        // console.log(deviceLanguage)
         !firedOnce && dispatch(switchLanguage(deviceLanguage))
         window.sessionStorage.setItem("firedOnce", "true");
-
-        // console.log(navigator)
     }, [])
 
     const handleLangChange = (lng: string | undefined) => {
@@ -35,7 +32,6 @@ export const Home = () => {
 
     return (
         <div className={cl.home}>
-            <p>{deviceLanguage}</p>
             <p>{t('selectLanguage')}</p>
             <div className={cl.buttons}>
                 {Object.keys(languages).map((lng) =>

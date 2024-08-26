@@ -13,15 +13,8 @@ export const ZodiacPage = () => {
     const { zodiac } = useParams<{ zodiac?: string }>()
     const { t } = useTranslation()
 
-
-    // const { language } = useAppSelector(state => state.LanguageSlice)
-    // const dispatch = useAppDispatch()
-
     const location = useLocation()
     const language = location.pathname.split('/')[2]
-    // useEffect(() => {
-    //     console.log(language)
-    // }, [location])
 
     const [description, setDescription] = useState<ZodiacQueryType | null>(null)
 
@@ -63,12 +56,9 @@ export const ZodiacPage = () => {
 
 
     return (
-        // <Swiper onSwipe={() => handleSwipe}>
         <div className={cl.zodiacPage} {...handlers}>
-            <p>{language}</p>
             <p>{zodiac && t(zodiac)}</p>
             <p>{description?.horoscope}</p>
         </div>
-        // {/* </Swiper> */ }
     )
 }
