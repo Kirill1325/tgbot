@@ -59,6 +59,7 @@ export const ZodiacPage = () => {
     return (
         // <Swiper onSwipe={() => handleSwipe}>
         <div className={cl.zodiacPage} {...handlers}>
+            <p>{language}</p>
             <p>{zodiac && t(zodiac)}</p>
             <p>{description?.horoscope}</p>
         </div>
